@@ -41,24 +41,29 @@ int main(int argc, char **argv) {
     if(argc == 1)
        return 1;
     
-    std::ifstream file(argv[1]);
-    if(!file.is_open()) {
-        std::cerr << "Can't open file \'" << argv[1] << "\'\n";
-        return 1;
+    std::string input_path{ argv[1] };
+    std::string output_path{ argc >= 3 ? argv[2] : "a.c" };
+
+    std::ifstream input_file(argv[1]);
+
+    if(!input_file.is_open()) {
+        std::cerr << "Can't open file \'" << input_path << "\'\n";
+        return 2;
     }
 
-    std::string input_bf;
+    std::string brainfuck_program;
     std::copy_if(
-            std::istream_iterator<char>(file),
+            std::istream_iterator<char>(input_file),
             std::istream_iterator<char>(),
-            std::back_inserter(input_bf),
+            std::back_inserter(brainfuck_program),
             is_bf_char
     );
 
-    auto groups_bf = group_by_type(input_bf);
-
-    std::string out_path = (argc >= 3 ? argv[2] : "a.c");
-    BFGenerator gen{ out_path };
-    for(auto& group : groups_bf)
+    BFGenerator gen{ output_path };
+    if(!gen.ready()) {
+        std::cerr << "Can't open file \'" << output_path << "\'\n";
+        return 2;
+    }
+    for(auto& group : group_by_type(brainfuck_program))
         gen.generate_next_opcode(group);
 }

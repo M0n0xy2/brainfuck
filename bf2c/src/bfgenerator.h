@@ -4,10 +4,11 @@
 #include <string>
 #include <fstream>
 #include <stdexcept>
+#include <utility>
 
 class BFGenerator {
 public:
-    BFGenerator(const std::string& path);
+    BFGenerator(std::string path);
     ~BFGenerator();
 
     BFGenerator(const BFGenerator&) = delete;
@@ -16,6 +17,7 @@ public:
     BFGenerator& operator=(BFGenerator&&) = delete;
 
     void generate_next_opcode(const std::string& opcode);
+    bool ready() const;
 private:
     void _op_ptr_plus(size_t s);
     void _op_ptr_minus(size_t s);
@@ -28,7 +30,7 @@ private:
         
     std::string _indent_string() const;
     size_t _indent_level;
-    std::ofstream _out_file;
+    std::ofstream _output_stream;
 };
 
 #endif //BFGENERATOR_HG
