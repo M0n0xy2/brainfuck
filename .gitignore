@@ -26,3 +26,6 @@
 *.exe
 *.out
 *.app
+
+[Bb]in
+[Bb]uild
