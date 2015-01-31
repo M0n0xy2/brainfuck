@@ -5,7 +5,7 @@
 #include <vector>
 #include <algorithm>
 
-#include "bfgenerator.h"
+#include "bf_c_generator.hpp"
 
 
 bool is_bf_char(char c) {
@@ -59,11 +59,10 @@ int main(int argc, char **argv) {
             is_bf_char
     );
 
-    BFGenerator gen{ output_path };
+    bf_c_generator gen{ output_path };
     if(!gen.ready()) {
         std::cerr << "Can't open file \'" << output_path << "\'\n";
         return 2;
     }
-    for(auto& group : group_by_type(brainfuck_program))
-        gen.generate_next_opcode(group);
+    run_brainfuck(gen, group_by_type(brainfuck_program));
 }
