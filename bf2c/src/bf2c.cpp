@@ -6,7 +6,7 @@
 #include <algorithm>
 
 #include "bf_c_generator.hpp"
-
+#include "bf_llvm_generator.hpp"
 
 bool is_bf_char(char c) {
     return c == '+'
@@ -59,10 +59,13 @@ int main(int argc, char **argv) {
             is_bf_char
     );
 
-    bf_c_generator gen{ output_path };
+    /* bf_c_generator gen{ output_path };
     if(!gen.ready()) {
         std::cerr << "Can't open file \'" << output_path << "\'\n";
         return 2;
-    }
+    } */
+    
+    bf_llvm_generator gen;
+
     run_brainfuck(gen, group_by_type(brainfuck_program));
 }
