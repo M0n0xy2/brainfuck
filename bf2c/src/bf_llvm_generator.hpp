@@ -8,6 +8,7 @@
 #include <llvm/IR/Module.h>
 #include <llvm/IR/Verifier.h>
 #include <llvm/Support/raw_ostream.h>
+#include <llvm/Support/FileSystem.h>
 #include <llvm/PassManager.h>
 #include <llvm/ExecutionEngine/ExecutionEngine.h>
 #include <llvm/ExecutionEngine/JIT.h>
@@ -25,17 +26,17 @@ public:
     bf_llvm_generator();
     virtual ~bf_llvm_generator();
 
-    virtual void start();
-    virtual void finish();
+    void start() override;
+    void finish() override;
 
-    virtual void op_ptr_plus(size_t s);
-    virtual void op_ptr_minus(size_t s);
-    virtual void op_value_plus(size_t s);
-    virtual void op_value_minus(size_t s);
-    virtual void op_get();
-    virtual void op_put();
-    virtual void op_while_open();
-    virtual void op_while_end();
+    void op_ptr_plus(size_t s) override;
+    void op_ptr_minus(size_t s) override;
+    void op_value_plus(size_t s) override;
+    void op_value_minus(size_t s) override;
+    void op_get() override;
+    void op_put() override;
+    void op_while_open() override;
+    void op_while_end() override;
 private:
     llvm::LLVMContext& _context;
     llvm::Module _main_module;

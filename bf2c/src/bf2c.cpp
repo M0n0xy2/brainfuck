@@ -42,7 +42,7 @@ int main(int argc, char **argv) {
        return 1;
     
     std::string input_path{ argv[1] };
-    std::string output_path{ argc >= 3 ? argv[2] : "a.c" };
+    std::string output_path{ argc >= 3 ? argv[2] : "a.ir" };
 
     std::ifstream input_file(argv[1]);
 

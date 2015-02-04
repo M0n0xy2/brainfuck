@@ -14,17 +14,17 @@ public:
 
     bool ready() const;
 
-    virtual void start();
-    virtual void finish();
+    void start() override;
+    void finish() override;
 
-    virtual void op_ptr_plus(size_t s);
-    virtual void op_ptr_minus(size_t s);
-    virtual void op_value_plus(size_t s);
-    virtual void op_value_minus(size_t s);
-    virtual void op_get();
-    virtual void op_put();
-    virtual void op_while_open();
-    virtual void op_while_end();
+    void op_ptr_plus(size_t s) override;
+    void op_ptr_minus(size_t s) override;
+    void op_value_plus(size_t s) override;
+    void op_value_minus(size_t s) override;
+    void op_get() override;
+    void op_put() override;
+    void op_while_open() override;
+    void op_while_end() override;
 
 private:
     std::string _indent_string() const;

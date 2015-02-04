@@ -48,12 +48,9 @@ bf_llvm_generator::bf_llvm_generator()
 }
 
 bf_llvm_generator::~bf_llvm_generator() {
-    //TODO
 }
 
 void bf_llvm_generator::start() {
-   
-    
 }
 
 void bf_llvm_generator::finish() {
