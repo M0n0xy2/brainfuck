@@ -26,9 +26,6 @@ public:
     bf_llvm_generator();
     virtual ~bf_llvm_generator();
 
-    void start() override;
-    void finish() override;
-
     void op_ptr_plus(size_t s) override;
     void op_ptr_minus(size_t s) override;
     void op_value_plus(size_t s) override;

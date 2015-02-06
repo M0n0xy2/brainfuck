@@ -48,12 +48,6 @@ bf_llvm_generator::bf_llvm_generator()
 }
 
 bf_llvm_generator::~bf_llvm_generator() {
-}
-
-void bf_llvm_generator::start() {
-}
-
-void bf_llvm_generator::finish() {
     _builder.CreateRetVoid();
     
     llvm::FunctionPassManager pm(&_main_module);
@@ -86,8 +80,6 @@ void bf_llvm_generator::finish() {
     pm.add(llvm::createInstructionCombiningPass());
     pm.add(llvm::createDeadCodeEliminationPass());
     pm.add(llvm::createDeadInstEliminationPass());
-    
-
 
     llvm::verifyFunction(*_main_function);
     

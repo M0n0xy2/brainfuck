@@ -11,11 +11,9 @@
 class bf_c_generator : public bf_user {
 public:
     bf_c_generator(std::string path);
+    virtual ~bf_c_generator();
 
     bool ready() const;
-
-    void start() override;
-    void finish() override;
 
     void op_ptr_plus(size_t s) override;
     void op_ptr_minus(size_t s) override;
