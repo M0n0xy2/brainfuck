@@ -22,7 +22,7 @@ struct loop_layout {
 };
 
 class bf_llvm_generator : public bf_user {
-public:
+  public:
     bf_llvm_generator();
     virtual ~bf_llvm_generator();
 
@@ -34,22 +34,23 @@ public:
     void op_put() override;
     void op_while_open() override;
     void op_while_end() override;
-private:
-    llvm::LLVMContext& _context;
+
+  private:
+    llvm::LLVMContext &_context;
     llvm::Module _main_module;
     llvm::IRBuilder<> _builder;
-    llvm::Type* _byte_type;
-    llvm::BasicBlock* _main_block;
+    llvm::Type *_byte_type;
+    llvm::BasicBlock *_main_block;
 
-    llvm::Function* _putchar_function;
-    llvm::Function* _getchar_function;
-    llvm::Function* _main_function;
+    llvm::Function *_putchar_function;
+    llvm::Function *_getchar_function;
+    llvm::Function *_main_function;
 
-    llvm::ArrayType* _memory_type;
-    llvm::GlobalVariable* _memory;
-    llvm::Value* _memory_ptr;
+    llvm::ArrayType *_memory_type;
+    llvm::GlobalVariable *_memory;
+    llvm::Value *_memory_ptr;
 
-    std::stack<loop_layout> _loops; 
+    std::stack<loop_layout> _loops;
 };
 
-#endif //BF_LLVM_GENERATOR
+#endif // BF_LLVM_GENERATOR

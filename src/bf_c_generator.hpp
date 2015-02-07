@@ -9,7 +9,7 @@
 #include "bf_user.hpp"
 
 class bf_c_generator : public bf_user {
-public:
+  public:
     bf_c_generator(std::string path);
     virtual ~bf_c_generator();
 
@@ -24,10 +24,10 @@ public:
     void op_while_open() override;
     void op_while_end() override;
 
-private:
+  private:
     std::string _indent_string() const;
     size_t _indent_level;
     std::ofstream _output_stream;
 };
 
-#endif //BFGENERATOR_HG
+#endif // BFGENERATOR_HG
